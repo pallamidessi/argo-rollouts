@@ -15,7 +15,7 @@ import (
 	"github.com/blang/semver"
 	"github.com/ghodss/yaml"
 	"github.com/go-openapi/spec"
-	extensionsobj "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
+	extensionsobj "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 )
 
@@ -84,9 +84,9 @@ func NewCustomResourceDefinition() []*extensionsobj.CustomResourceDefinition {
 		// https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#field-pruning
 		// It is possible though to opt-out of pruning for specifc sub-trees of fields by adding x-kubernetes-preserve-unknown-fields: true
 		// by using the 'setValidationOverride' function in this file.
-		"crd:preserveUnknownFields=false",
-		"crd:crdVersions=v1",
-		"crd:maxDescLen=0",
+		//"crd:preserveUnknownFields=false",
+		"crd:crdVersions=v1beta1",
+		//"crd:maxDescLen=0",
 		"output:crd:stdout",
 	).Output()
 	if err != nil {
